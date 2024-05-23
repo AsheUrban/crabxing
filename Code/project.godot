@@ -15,6 +15,10 @@ run/main_scene="res://Main/Main.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://Main/icon.png"
 
+[dotnet]
+
+project/assembly_name="Danger X-ing"
+
 [physics]
 
 common/enable_pause_aware_picking=true

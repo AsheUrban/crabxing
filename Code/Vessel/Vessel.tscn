@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg2s3yycrmrtw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04pwl"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oepts"]
+albedo_color = Color(0.341176, 0.172549, 0.0313726, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n3lmk"]
+height = 3.0
+
+[node name="Vessel" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326929, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.349186, 0)
+shape = SubResource("BoxShape3D_04pwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.000139635, -1, 0, 1, 0.000139635, 0, 0, 0, 1, 0, 0.400043, 0)
+material_override = SubResource("StandardMaterial3D_oepts")
+mesh = SubResource("CylinderMesh_n3lmk")

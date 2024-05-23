@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4nt6dxo7qu31"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpl31"]
+albedo_color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_biut3"]
+size = Vector3(15, 0.2, 1)
+
+[node name="Road" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mpl31")
+mesh = SubResource("BoxMesh_biut3")

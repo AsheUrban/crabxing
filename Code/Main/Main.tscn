@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://cib786y4fr7cb"]
+[gd_scene load_steps=8 format=3 uid="uid://cib786y4fr7cb"]
 
 [ext_resource type="Script" path="res://Main/Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://lgfdisbajd27" path="res://Animal/Animal.tscn" id="2_omvvu"]
+[ext_resource type="PackedScene" uid="uid://or101yc0mr1h" path="res://River/River.tscn" id="3_iw6bc"]
+[ext_resource type="PackedScene" uid="uid://b4nt6dxo7qu31" path="res://Road/Road.tscn" id="4_lqfiw"]
+[ext_resource type="PackedScene" uid="uid://bqrgxygsryqev" path="res://Vehicle/Vehicle.tscn" id="5_y4yr2"]
+[ext_resource type="PackedScene" uid="uid://cg2s3yycrmrtw" path="res://Vessel/Vessel.tscn" id="6_ygbpn"]
+[ext_resource type="PackedScene" uid="uid://c2sgsdqkl8qmw" path="res://Roost/Roost.tscn" id="7_53kd6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1")
+
+[node name="Animal" parent="." instance=ExtResource("2_omvvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51808, 0, 2.42061)
+
+[node name="River" parent="." instance=ExtResource("3_iw6bc")]
+
+[node name="Road" parent="." instance=ExtResource("4_lqfiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.02329)
+
+[node name="Vehicle" parent="." instance=ExtResource("5_y4yr2")]
+transform = Transform3D(0.817848, 0, 0, 0, 1, 0, 0, 0, 0.729867, -0.289294, 0, -2.01933)
+
+[node name="Vessel" parent="." instance=ExtResource("6_ygbpn")]
+
+[node name="Vehicle2" parent="." instance=ExtResource("5_y4yr2")]
+transform = Transform3D(0.817848, 0, 0, 0, 1, 0, 0, 0, 0.729867, -4.34941, 0, -2.05306)
+
+[node name="Roost" parent="." instance=ExtResource("7_53kd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76591)

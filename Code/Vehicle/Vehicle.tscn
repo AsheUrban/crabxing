@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqrgxygsryqev"]
+
+[ext_resource type="Material" uid="uid://ci0xobic38hmb" path="res://Vehicle/Assets/tires.tres" id="1_72y6v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4iiwo"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t3dja"]
+top_radius = 0.3
+bottom_radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jl72u"]
+size = Vector3(2, 0.641113, 1)
+
+[node name="Vehicle" type="Area3D"]
+transform = Transform3D(0.817848, 0, 0, 0, 1, 0, 0, 0, 0.729867, 0, 0, 0)
+
+[node name="Car" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226949, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(0.990018, 0, 0, 0, 0.51163, 0, 0, 0, 0.990018, 0, 0.303004, 0)
+mesh = SubResource("BoxMesh_4iiwo")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 0.00410259, -0.997203, 0, 0.615333, 0.00664863, 0.60645, 0.175186, 0)
+material_override = ExtResource("1_72y6v")
+mesh = SubResource("CylinderMesh_t3dja")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 0.00410259, -0.997203, 0, 0.615333, 0.00664863, -0.611721, 0.175186, 0)
+material_override = ExtResource("1_72y6v")
+mesh = SubResource("CylinderMesh_t3dja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179443, 0)
+shape = SubResource("BoxShape3D_jl72u")
