@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cib786y4fr7cb"]
+[gd_scene load_steps=13 format=3 uid="uid://cib786y4fr7cb"]
 
 [ext_resource type="Script" path="res://Main/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://lgfdisbajd27" path="res://Animal/Animal.tscn" id="2_omvvu"]
@@ -7,25 +7,64 @@
 [ext_resource type="PackedScene" uid="uid://bqrgxygsryqev" path="res://Vehicle/Vehicle.tscn" id="5_y4yr2"]
 [ext_resource type="PackedScene" uid="uid://cg2s3yycrmrtw" path="res://Vessel/Vessel.tscn" id="6_ygbpn"]
 [ext_resource type="PackedScene" uid="uid://c2sgsdqkl8qmw" path="res://Roost/Roost.tscn" id="7_53kd6"]
+[ext_resource type="PackedScene" uid="uid://dcequ4lap64cn" path="res://PlayerUI/PlayerUI.tscn" id="8_btwxf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1rk54"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5ikym"]
+sky_material = SubResource("ProceduralSkyMaterial_1rk54")
+
+[sub_resource type="Environment" id="Environment_7lvsh"]
+background_mode = 2
+sky = SubResource("Sky_5ikym")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdo3p"]
+size = Vector3(14.668, 0.5, 12.1157)
 
 [node name="Main" type="Node"]
 script = ExtResource("1")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7lvsh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Animal" parent="." instance=ExtResource("2_omvvu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51808, 0, 2.42061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.76682)
+
+[node name="Rig" type="Node3D" parent="Animal"]
+transform = Transform3D(1, 0, 0, 0, 0.757941, 0.652323, 0, -0.652323, 0.757941, 0, 0.325095, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Animal/Rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45778, 7.21685)
 
 [node name="River" parent="." instance=ExtResource("3_iw6bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7428)
 
 [node name="Road" parent="." instance=ExtResource("4_lqfiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.02329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76609)
 
 [node name="Vehicle" parent="." instance=ExtResource("5_y4yr2")]
-transform = Transform3D(0.817848, 0, 0, 0, 1, 0, 0, 0, 0.729867, -0.289294, 0, -2.01933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289294, 0, -4.76213)
 
 [node name="Vessel" parent="." instance=ExtResource("6_ygbpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326929, -2.7428)
 
 [node name="Vehicle2" parent="." instance=ExtResource("5_y4yr2")]
-transform = Transform3D(0.817848, 0, 0, 0, 1, 0, 0, 0, 0.729867, -4.34941, 0, -2.05306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34941, 0, -4.79586)
 
 [node name="Roost" parent="." instance=ExtResource("7_53kd6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.50872)
+
+[node name="PlayerUi" parent="." instance=ExtResource("8_btwxf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.237879, -2.87671)
+shape = SubResource("BoxShape3D_hdo3p")

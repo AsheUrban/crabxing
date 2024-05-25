@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lgfdisbajd27"]
+[gd_scene load_steps=8 format=3 uid="uid://lgfdisbajd27"]
+
+[ext_resource type="Script" path="res://Animal/Animal.gd" id="1_lpbk2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wlr4a"]
-size = Vector3(1, 1.625, 1)
+size = Vector3(1, 1.36328, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akkfr"]
 albedo_color = Color(1, 0.207843, 0.254902, 1)
@@ -17,9 +19,10 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_3v0gn"]
 
 [node name="Animal" type="CharacterBody3D"]
+script = ExtResource("1_lpbk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60451, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735369, 0)
 shape = SubResource("BoxShape3D_wlr4a")
 
 [node name="Crab" type="Node3D" parent="."]
