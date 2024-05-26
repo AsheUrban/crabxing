@@ -35,7 +35,6 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Animal" parent="." instance=ExtResource("2_omvvu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.76682)
 
 [node name="Rig" type="Node3D" parent="Animal"]
 transform = Transform3D(1, 0, 0, 0, 0.757941, 0.652323, 0, -0.652323, 0.757941, 0, 0.325095, 0)
@@ -44,22 +43,19 @@ transform = Transform3D(1, 0, 0, 0, 0.757941, 0.652323, 0, -0.652323, 0.757941, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45778, 7.21685)
 
 [node name="River" parent="." instance=ExtResource("3_iw6bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
 [node name="Road" parent="." instance=ExtResource("4_lqfiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76609)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Vehicle" parent="." instance=ExtResource("5_y4yr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289294, 0, -4.76213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 
 [node name="Vessel" parent="." instance=ExtResource("6_ygbpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326929, -2.7428)
-
-[node name="Vehicle2" parent="." instance=ExtResource("5_y4yr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34941, 0, -4.79586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
 
 [node name="Roost" parent="." instance=ExtResource("7_53kd6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.50872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 
 [node name="PlayerUi" parent="." instance=ExtResource("8_btwxf")]
 
