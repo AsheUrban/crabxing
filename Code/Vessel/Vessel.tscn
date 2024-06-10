@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg2s3yycrmrtw"]
+[gd_scene load_steps=5 format=3 uid="uid://cg2s3yycrmrtw"]
+
+[ext_resource type="Script" path="res://Vessel/Vessel.gd" id="1_8v0tf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_04pwl"]
 size = Vector3(3, 1, 1)
@@ -11,6 +13,7 @@ height = 3.0
 
 [node name="Vessel" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326929, 0)
+script = ExtResource("1_8v0tf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.349186, 0)

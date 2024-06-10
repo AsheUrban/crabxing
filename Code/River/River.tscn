@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://or101yc0mr1h"]
+[gd_scene load_steps=5 format=3 uid="uid://or101yc0mr1h"]
+
+[ext_resource type="Script" path="res://River/River.gd" id="1_d8fhu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5fh8"]
 size = Vector3(15, 0.2, 1)
@@ -10,6 +12,7 @@ albedo_color = Color(0.219608, 0.294118, 1, 1)
 size = Vector3(15, 0.2, 1)
 
 [node name="River" type="Area3D"]
+script = ExtResource("1_d8fhu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_u5fh8")
