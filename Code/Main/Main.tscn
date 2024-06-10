@@ -45,12 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 [node name="River" parent="." instance=ExtResource("3_iw6bc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="River2" parent="." instance=ExtResource("3_iw6bc")]
-transform = Transform3D(-0.00392703, 0, 0.999992, 0, 1, 0, -0.999992, 0, -0.00392703, -0.0180387, 0, -4)
-
-[node name="River3" parent="." instance=ExtResource("3_iw6bc")]
-transform = Transform3D(-0.00392703, 0, 0.999992, 0, 1, 0, -0.999992, 0, -0.00392703, -2.01804, 0, -4)
-
 [node name="Road" parent="." instance=ExtResource("4_lqfiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 

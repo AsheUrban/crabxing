@@ -42,6 +42,8 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = -90.0
 			rotation_lerp = 0.0
+			if current_rotation > 90.0: # unwind from 180 degrees
+				current_rotation -= 360.0
 			
 		if Input.is_action_just_pressed("move_forward"):
 			target_position = current_position + Vector3.FORWARD # this is equal to Vector3.(0,0,-1)
@@ -54,7 +56,8 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = 180.0
 			rotation_lerp = 0.0
-			#if current_rotation < 1.0:
+			if current_rotation < 0.0: # -90
+				current_rotation += 360.0
 
 func OnAreaEntered(area: Area3D):
 	if area is Road:
