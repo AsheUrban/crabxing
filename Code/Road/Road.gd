@@ -1,2 +1,2 @@
-extends Area3D
+extends Lane
 class_name Road

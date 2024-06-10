@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Animal/Animal.gd" id="1_lpbk2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wlr4a"]
-size = Vector3(1, 1.36328, 1)
+size = Vector3(0.8, 0.962036, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akkfr"]
 albedo_color = Color(1, 0.207843, 0.254902, 1)
@@ -22,11 +22,11 @@ albedo_color = Color(0, 0, 0, 1)
 script = ExtResource("1_lpbk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735369, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556985, 0)
 shape = SubResource("BoxShape3D_wlr4a")
 
 [node name="Crab" type="Node3D" parent="."]
-transform = Transform3D(0.703386, 0, 0, 0, 0.662555, 0, 0, 0, 0.753139, 0, 0.518409, 0)
+transform = Transform3D(0.623967, 0, 0, 0, 0.623967, 0, 0, 0, 0.623967, 0, 0.429468, 0)
 
 [node name="Body" type="MeshInstance3D" parent="Crab"]
 material_override = SubResource("StandardMaterial3D_akkfr")

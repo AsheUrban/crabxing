@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://River/River.gd" id="1_d8fhu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5fh8"]
-size = Vector3(15, 0.2, 1)
+size = Vector3(20, 0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oef4k"]
 albedo_color = Color(0.219608, 0.294118, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3g50p"]
-size = Vector3(15, 0.2, 1)
+size = Vector3(20, 0.2, 1)
 
 [node name="River" type="Area3D"]
 script = ExtResource("1_d8fhu")

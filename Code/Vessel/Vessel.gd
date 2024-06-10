@@ -1,4 +1,4 @@
-extends Area3D
+extends Craft
 class_name Vessel
 
 

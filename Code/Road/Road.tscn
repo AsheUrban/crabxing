@@ -2,21 +2,21 @@
 
 [ext_resource type="Script" path="res://Road/Road.gd" id="1_pdqbf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7oo7"]
+size = Vector3(20, 0.2, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpl31"]
 albedo_color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_biut3"]
-size = Vector3(15, 0.2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e7oo7"]
-size = Vector3(15, 0.2, 1)
+size = Vector3(20, 0.2, 1)
 
 [node name="Road" type="Area3D"]
 script = ExtResource("1_pdqbf")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e7oo7")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_mpl31")
 mesh = SubResource("BoxMesh_biut3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_e7oo7")
