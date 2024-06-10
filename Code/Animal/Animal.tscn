@@ -18,7 +18,7 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3v0gn"]
 
-[node name="Animal" type="CharacterBody3D"]
+[node name="Animal" type="Area3D"]
 script = ExtResource("1_lpbk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -90,14 +90,14 @@ material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
 
-[node name="Leg4" type="MeshInstance3D" parent="Crab"]
-transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, -0.413177)
+[node name="Leg2" type="MeshInstance3D" parent="Crab"]
+transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.409942)
 material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
 
-[node name="Leg2" type="MeshInstance3D" parent="Crab"]
-transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.409942)
+[node name="Leg4" type="MeshInstance3D" parent="Crab"]
+transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, -0.413177)
 material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
