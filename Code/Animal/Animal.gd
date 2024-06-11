@@ -4,6 +4,8 @@ class_name Animal
 @export var stride_speed: float = 0.25 # in seconds
 @onready var crab = $Crab
 
+var main: Main
+
 var current_position: Vector3
 var target_position: Vector3
 var position_lerp: float = 1.0 # 0-100% | 1 / 100
@@ -13,9 +15,10 @@ var target_rotation: float
 var rotation_lerp: float
 
 func _ready():
+	area_entered.connect(OnAreaEntered)
+	main = get_parent()
 	current_position = position
 	target_position = position
-	area_entered.connect(OnAreaEntered)
 	
 func _process(delta):
 	if position_lerp < 1.0:
@@ -62,13 +65,26 @@ func _process(delta):
 func OnAreaEntered(area: Area3D):
 	if area is Road:
 		print("You made it across the road!", area)
+		
 	if area is Vehicle:
 		print("XX/ You were hit by a vehicle!", area)
+		
 	if area is River:	
 		print("Swallowed by the depths!", area)
+		
 	if area is Vessel:
 		print("Riding the: ", area)
+		
 	if area is Roost:
-		print("We made it safely to our roost!", area)	
+		if !area.animal.visible:
+			area.ShowAnimal()
+			position = Vector3.ZERO
+			current_position = Vector3.ZERO
+			target_position = Vector3.ZERO
+			current_rotation = 0.0
+			target_rotation = 0.0
+			print("We made it safely to our roost!", area)	
+		main.IsGameOver()
+		
 		
 	

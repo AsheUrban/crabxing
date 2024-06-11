@@ -79,19 +79,19 @@ mesh = SubResource("BoxMesh_3v0gn")
 skeleton = NodePath("../../Right Eye")
 
 [node name="Leg" type="MeshInstance3D" parent="Crab"]
-transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.118737)
+transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.153311)
 material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
 
 [node name="Leg3" type="MeshInstance3D" parent="Crab"]
-transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, -0.173556)
+transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, -0.140312)
 material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
 
 [node name="Leg2" type="MeshInstance3D" parent="Crab"]
-transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.409942)
+transform = Transform3D(1.44743, 0, 0, 0, 0.434645, 0, 0, 0, 0.1607, 0.00958169, -0.360277, 0.451667)
 material_override = SubResource("StandardMaterial3D_akkfr")
 mesh = SubResource("BoxMesh_br7fe")
 skeleton = NodePath("../..")
