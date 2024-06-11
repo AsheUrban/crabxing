@@ -138,8 +138,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.237879, -2.87671)
 shape = SubResource("BoxShape3D_hdo3p")
 
-[node name="PlayerUi" parent="." instance=ExtResource("8_btwxf")]
-
 [node name="GameOver" type="PanelContainer" parent="."]
 offset_left = 19.0
 offset_top = 21.0
@@ -151,3 +149,5 @@ layout_mode = 2
 text = "YOU WIN!"
 label_settings = SubResource("LabelSettings_qn7tl")
 horizontal_alignment = 1
+
+[node name="PlayerUI" parent="." instance=ExtResource("8_btwxf")]

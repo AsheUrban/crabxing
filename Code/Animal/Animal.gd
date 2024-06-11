@@ -61,30 +61,37 @@ func _process(delta):
 			rotation_lerp = 0.0
 			if current_rotation < 0.0: # -90
 				current_rotation += 360.0
-
+				
+func ResetToOrigin():
+	position = Vector3.ZERO
+	current_position = Vector3.ZERO
+	target_position = Vector3.ZERO
+	current_rotation = 0.0
+	target_rotation = 0.0			
+			
 func OnAreaEntered(area: Area3D):
-	if area is Road:
-		print("You made it across the road!", area)
-		
 	if area is Vehicle:
+		main.player_ui.UpdateLives(-1)
+		ResetToOrigin()
 		print("XX/ You were hit by a vehicle!", area)
 		
-	if area is River:	
-		print("Swallowed by the depths!", area)
+	if area is Roost:
+		if not area.animal.visible:
+			area.ShowAnimal()
+			ResetToOrigin()
+			print("We made it safely to our roost!", area)	
+		main.IsGameOver()
 		
 	if area is Vessel:
 		print("Riding the: ", area)
 		
-	if area is Roost:
-		if !area.animal.visible:
-			area.ShowAnimal()
-			position = Vector3.ZERO
-			current_position = Vector3.ZERO
-			target_position = Vector3.ZERO
-			current_rotation = 0.0
-			target_rotation = 0.0
-			print("We made it safely to our roost!", area)	
-		main.IsGameOver()
+	if area is River:	
+		print("Swallowed by the depths!", area)
+		
+	if area is Road:
+		main.player_ui.UpdateScore(10)
+		print("You made it across the road!", area)
+		
 		
 		
 	

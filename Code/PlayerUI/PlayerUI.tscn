@@ -1,12 +1,35 @@
-[gd_scene format=3 uid="uid://dcequ4lap64cn"]
+[gd_scene load_steps=4 format=3 uid="uid://dcequ4lap64cn"]
 
-[node name="PlayerUI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+[ext_resource type="PackedScene" uid="uid://k8ny5w80f0cp" path="res://PlayerUI/assets/life.tscn" id="1_8rqsp"]
+[ext_resource type="Script" path="res://PlayerUI/PlayerUI.gd" id="1_rtiqf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cb27l"]
+font_size = 20
+
+[node name="PlayerUI" type="PanelContainer"]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -99.0
+offset_right = 472.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 2
+script = ExtResource("1_rtiqf")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ScoreUI" type="Label" parent="VBox"]
+layout_mode = 2
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_cb27l")
+
+[node name="LivesUI" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="Life" parent="VBox/LivesUI" instance=ExtResource("1_8rqsp")]
+layout_mode = 2

@@ -3,6 +3,7 @@ class_name Main
 
 @onready var game_over = $GameOver
 @onready var roosts = $Roosts
+@onready var player_ui = $PlayerUI
 
 func _ready():
 	game_over.hide()
