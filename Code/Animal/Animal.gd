@@ -14,6 +14,9 @@ var current_rotation: float
 var target_rotation: float
 var rotation_lerp: float
 
+var disabled: bool = false
+var disabled_speed: float = 4.0
+
 func _ready():
 	area_entered.connect(OnAreaEntered)
 	main = get_parent()
@@ -22,18 +25,25 @@ func _ready():
 	
 func _process(delta):
 	if position_lerp < 1.0:
-		position_lerp += delta / stride_speed
-		rotation_lerp += delta / stride_speed
+		if not disabled:
+			position_lerp += delta / stride_speed
+		else:
+			position_lerp += delta / disabled_speed
 		
+		rotation_lerp += delta / stride_speed
 		position_lerp = clamp(position_lerp, 0.0, 1.0)
 		rotation_lerp = clamp(rotation_lerp, 0.0, 1.0)
 		
 		position = lerp(current_position, target_position, position_lerp)
 		crab.rotation_degrees.y = lerp(current_rotation, target_rotation, rotation_lerp)
-	else: 
-		current_position = target_position
-		current_rotation = target_rotation
 		
+		if position_lerp >= 1.0:
+			current_position = target_position
+			current_rotation = target_rotation
+			disabled = false
+			crab.show()
+			
+	else: 
 		if Input.is_action_just_pressed("move_left"):
 			target_position = current_position + Vector3.LEFT
 			position_lerp = 0.0
@@ -45,6 +55,7 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = -90.0
 			rotation_lerp = 0.0
+			
 			if current_rotation > 90.0: # unwind from 180 degrees
 				current_rotation -= 360.0
 			
@@ -59,39 +70,40 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = 180.0
 			rotation_lerp = 0.0
+			
 			if current_rotation < 0.0: # -90
 				current_rotation += 360.0
 				
 func ResetToOrigin():
-	position = Vector3.ZERO
-	current_position = Vector3.ZERO
+	crab.hide()
 	target_position = Vector3.ZERO
 	current_rotation = 0.0
-	target_rotation = 0.0			
+	target_rotation = 0.0	
+	position_lerp = 0.0		
+	disabled = true 
+	disabled_speed = current_position.distance_to(target_position)
+	print("Dsitance to origin: ", disabled_speed)
 			
 func OnAreaEntered(area: Area3D):
-	if area is Vehicle:
-		main.player_ui.UpdateLives(-1)
-		ResetToOrigin()
-		print("XX/ You were hit by a vehicle!", area)
-		
-	if area is Roost:
-		if not area.animal.visible:
-			area.ShowAnimal()
+	if not disabled:
+		if area is Vehicle or area is River:
+			main.player_ui.UpdateLives(-1)
 			ResetToOrigin()
-			print("We made it safely to our roost!", area)	
-		main.IsGameOver()
+			main.IsGameOver("Game Over")
+			print("XX/ You were killed by: ", area)
 		
-	if area is Vessel:
-		print("Riding the: ", area)
-		
-	if area is River:	
-		print("Swallowed by the depths!", area)
-		
-	if area is Road:
-		main.player_ui.UpdateScore(10)
-		print("You made it across the road!", area)
-		
-		
+		if area is Vessel:
+			print("Riding the: ", area)
+			
+		if area is Road:
+			main.player_ui.UpdateScore(10)
+			print("You made it across the road! ", area)
+			
+		if area is Roost:
+			if not area.animal.visible:
+				area.ShowAnimal()
+				#ResetToOrigin()
+				print("We made it safely to our roost! ", area)	
+			main.IsGameOver("You win!")
 		
 	

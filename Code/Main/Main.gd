@@ -8,7 +8,11 @@ class_name Main
 func _ready():
 	game_over.hide()
 	
-func IsGameOver():
+func IsGameOver(message: String):
+	if player_ui.lives < 0:
+		game_over.show()
+		game_over.get_child(0).text = message
+	
 	var is_roost_full = true
 	for roost in roosts.get_children():
 		if not roost.animal.visible:

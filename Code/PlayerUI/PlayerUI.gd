@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 class_name PlayerUI
 
 const LIFE = preload("res://PlayerUI/PlayerUI.tscn")
