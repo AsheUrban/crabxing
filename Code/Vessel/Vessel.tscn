@@ -18,10 +18,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.326929, 0)
 script = ExtResource("1_8v0tf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.349186, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00763, 0.349186, 0)
 shape = SubResource("BoxShape3D_04pwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.57218e-05, -0.685514, 0, 0.685514, 9.57218e-05, 0, 0, 0, 0.685514, 0, 0.304368, 0)
+transform = Transform3D(9.57218e-05, -0.685514, 0, 0.685514, 9.57218e-05, 0, 0, 0, 0.685514, 1.00763, 0.304368, 0)
 material_override = SubResource("StandardMaterial3D_oepts")
 mesh = SubResource("CylinderMesh_n3lmk")

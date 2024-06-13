@@ -17,6 +17,9 @@ var rotation_lerp: float
 var disabled: bool = false
 var disabled_speed: float = 4.0
 
+var ride: Vessel = null
+var ride_offset: Vector3 = Vector3.ZERO
+
 func _ready():
 	area_entered.connect(OnAreaEntered)
 	main = get_parent()
@@ -25,6 +28,10 @@ func _ready():
 	
 func _process(delta):
 	if position_lerp < 1.0:
+		if ride != null:
+			target_position = ride.global_position + ride_offset
+			
+		
 		if not disabled:
 			position_lerp += delta / stride_speed
 		else:
@@ -42,8 +49,11 @@ func _process(delta):
 			current_rotation = target_rotation
 			disabled = false
 			crab.show()
-			
 	else: 
+		if ride != null:
+			position = ride.global_position + ride_offset
+			
+			
 		if Input.is_action_just_pressed("move_left"):
 			target_position = current_position + Vector3.LEFT
 			position_lerp = 0.0
@@ -55,7 +65,6 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = -90.0
 			rotation_lerp = 0.0
-			
 			if current_rotation > 90.0: # unwind from 180 degrees
 				current_rotation -= 360.0
 			
@@ -70,7 +79,6 @@ func _process(delta):
 			position_lerp = 0.0
 			target_rotation = 180.0
 			rotation_lerp = 0.0
-			
 			if current_rotation < 0.0: # -90
 				current_rotation += 360.0
 				
@@ -81,20 +89,27 @@ func ResetToOrigin():
 	target_rotation = 0.0	
 	position_lerp = 0.0		
 	disabled = true 
-	disabled_speed = current_position.distance_to(target_position)
+	disabled_speed = stride_speed * current_position.distance_to(target_position)
 	print("Dsitance to origin: ", disabled_speed)
 			
 func OnAreaEntered(area: Area3D):
 	if not disabled:
-		if area is Vehicle or area is River:
-			main.player_ui.UpdateLives(-1)
-			ResetToOrigin()
-			main.IsGameOver("Game Over")
-			print("XX/ You were killed by: ", area)
+		##if area is Vehicle or area is River:
+		#if area is River:
+			#if ride == null:
+				#main.player_ui.UpdateLives(-1)
+				#ResetToOrigin()
+				#main.IsGameOver("Game Over")
+				#print("XX/ You were killed by: ", area)
 		
 		if area is Vessel:
-			print("Riding the: ", area)
-			
+			ride = area
+			if area.global_rotation.y == 0.0: # Only left and right rivers
+				ride_offset = Vector3(1.0, 0.0, 0.0)
+			else:
+				ride_offset = Vector3(-1.0, 0.0, 0.0)
+				print("Riding the: ", area)
+				
 		if area is Road:
 			main.player_ui.UpdateScore(10)
 			print("You made it across the road! ", area)
