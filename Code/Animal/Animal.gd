@@ -34,7 +34,6 @@ func _process(delta):
 		if ride != null:
 			target_position = ride.global_position + ride_offset
 			
-		
 		if not killed:
 			position_lerp += delta / stride_speed
 		else:
