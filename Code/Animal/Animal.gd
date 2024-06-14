@@ -36,8 +36,8 @@ func _process(delta):
 			position_lerp += delta / stride_speed
 		else:
 			position_lerp += delta / disabled_speed
-		
 		rotation_lerp += delta / stride_speed
+		
 		position_lerp = clamp(position_lerp, 0.0, 1.0)
 		rotation_lerp = clamp(rotation_lerp, 0.0, 1.0)
 		
@@ -49,19 +49,28 @@ func _process(delta):
 			current_rotation = target_rotation
 			disabled = false
 			crab.show()
+			
 	else: 
 		if ride != null:
 			position = ride.global_position + ride_offset
-			
+			current_position = position
 			
 		if Input.is_action_just_pressed("move_left"):
-			target_position = current_position + Vector3.LEFT
+			if ride != null:
+				ride_offset += Vector3.LEFT
+				#target_position = ride.global_position + ride_offset
+			else:
+				target_position = current_position + Vector3.LEFT
 			position_lerp = 0.0
 			target_rotation = 90.0
 			rotation_lerp = 0.0
 			
 		if Input.is_action_just_pressed("move_right"):
-			target_position = current_position + Vector3.RIGHT
+			if ride != null:
+				ride_offset += Vector3.RIGHT
+			#target_position = current_position + Vector3.RIGHT
+			else:
+				target_position = current_position + Vector3.RIGHT
 			position_lerp = 0.0
 			target_rotation = -90.0
 			rotation_lerp = 0.0
@@ -104,11 +113,15 @@ func OnAreaEntered(area: Area3D):
 		
 		if area is Vessel:
 			ride = area
+			ride_offset.x = round(global_position.x - area.global_position.x)
+			
 			if area.global_rotation.y == 0.0: # Only left and right rivers
-				ride_offset = Vector3(1.0, 0.0, 0.0)
+				ride_offset.x = clamp(ride_offset.x, 0.0, area.seat_count - 1)
 			else:
-				ride_offset = Vector3(-1.0, 0.0, 0.0)
-				print("Riding the: ", area)
+				ride_offset.x = clamp(ride_offset.x, -(area.seat_count - 1), 0.0)
+				
+			print("Riding the: ", area)
+			print("ride offset = ", ride_offset)
 				
 		if area is Road:
 			main.player_ui.UpdateScore(10)
