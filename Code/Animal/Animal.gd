@@ -133,7 +133,7 @@ func OnAreaEntered(area: Area3D):
 		if area is Roost:
 			if not area.animal.visible:
 				area.ShowAnimal()
-				Kill()
+				Kill() #this doesn't really work here
 				print("We made it safely to our roost! ", area)	
 			main.IsGameOver("You win!")
 				
