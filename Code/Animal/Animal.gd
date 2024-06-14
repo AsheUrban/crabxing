@@ -27,6 +27,9 @@ func _ready():
 	target_position = position
 	
 func _process(delta):
+	if global_position.x > 10 or global_position.x < -10:
+		Kill()
+		
 	if position_lerp < 1.0:
 		if ride != null:
 			target_position = ride.global_position + ride_offset
@@ -74,7 +77,6 @@ func _process(delta):
 			if ride != null:
 				ride_offset += Vector3.RIGHT
 				if ride.global_rotation.y == 0:
-					
 					if ride_offset.x > ride.seat_count - 1:
 						Kill()
 				else:
